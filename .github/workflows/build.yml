@@ -35,4 +35,5 @@ jobs:
         api-level: 35
         arch: x86_64
         profile: google_apis
+        device: pixel_6
         script: ./gradlew connectedDebugAndroidTest
