@@ -25,15 +25,22 @@ jobs:
     - name: Accept licenses
       run: |
         yes | sdkmanager --licenses || true
+
+    - name: Install Android SDK components
+      run: |
+        sdkmanager --install "build-tools;34.0.0" "platform-tools" "platforms;android-34"
       
     - name: Run unit tests
       run: ./gradlew testDebugUnitTest
+
+    - name: List available system images
+      run: sdkmanager --list | grep "system-images;android-35"
       
     - name: Run instrumented tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
-        api-level: 35
+        api-level: 34 
+        profile: google_apis_playstore
         arch: x86_64
-        profile: google_apis
         device: pixel_6
         script: ./gradlew connectedDebugAndroidTest
