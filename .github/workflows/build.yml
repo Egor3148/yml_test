@@ -24,9 +24,15 @@ jobs:
       
     - name: Run unit tests
       run: ./gradlew testDebugUnitTest
+
+    - name: List available system images
+      run: sdkmanager --list | grep "system-images;android-35"
       
     - name: Run instrumented tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 35
+        profile: google_apis_playstore
+        arch: x86_64
+        device: pixel_6
         script: ./gradlew connectedDebugAndroidTest
