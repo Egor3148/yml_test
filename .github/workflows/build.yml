@@ -28,7 +28,7 @@ jobs:
 
     - name: Install Android SDK components
       run: |
-        sdkmanager --install "build-tools;34.0.0" "platform-tools" "platforms;android-34"
+        sdkmanager --install "build-tools;35.0.0" "platform-tools" "platforms;android-35"
       
     - name: Run unit tests
       run: ./gradlew testDebugUnitTest
@@ -36,7 +36,7 @@ jobs:
     - name: Run instrumented tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
-        api-level: 34
+        api-level: 35
         arch: x86_64 
         profile: google_apis_playstore
         device: pixel_6
